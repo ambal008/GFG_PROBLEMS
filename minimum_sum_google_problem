@@ -1,0 +1,105 @@
+string minSum(vector<int> &arr) {
+        
+        //solution 1 
+        
+        sort(arr.begin(),arr.end());
+        bool toggle=true;
+        
+        string s1="";
+        string s2="";
+        for(int i=0;i<arr.size();i++){
+            if(toggle){
+                s1+=arr[i]+'0';
+            }
+            else{
+                s2+=arr[i]+'0';
+            }
+            toggle=!toggle;
+        }
+        
+        
+        
+        
+        
+        
+        //solution 2
+    //   vector<int>count(10,0);
+        
+  
+    //     for(int i : arr){
+    //         count[i]++;
+    //     }
+        
+        
+    //     string s1="";
+    //     string s2="";
+    //     bool toggle=true;
+        
+    //     for(int i=0;i<=9;i++){
+    //         while(count[i]>0){
+               
+    //             if(toggle){
+               
+    //                 s1+=i+'0';
+    //             }
+    //             else{
+                    
+    //                 s2+=i+'0';
+    //             }
+                
+    //             count[i]--;
+    //             toggle=!toggle;
+    //         }
+    //     }
+        
+        
+    //     // cout<<s1<<endl;
+    //     // cout<<s2<<endl;
+    //     // s1=removezeros(s1);
+        
+    //     // s2=removezeros(s2);
+        
+        s1.erase(0,s1.find_first_not_of('0'));
+        s2.erase(0,s2.find_first_not_of('0'));
+        
+        
+        return addstring(s1,s2);
+        
+        
+        
+    }
+    
+    
+    string addstring(string s1,string s2){
+        int carry=0;
+        string res="";
+        int i=s1.size()-1;
+        int j=s2.size()-1;
+        
+        int t1,t2;
+        while(i>=0 || j>=0 ){
+             t1=i>=0 ? s1[i]-'0':0;
+              t2=j>=0 ? s2[j]-'0':0;
+            int sum=t1+t2+carry;
+          
+            res+=sum%10+'0';
+             carry=sum/10;
+            i--;
+            j--;
+            
+            
+        }
+        if(carry==1){
+            int sum=carry;
+          
+        res+=to_string(sum%10);
+        }
+            //  carry=sum/10;
+        
+        //   string s=
+        reverse(res.begin(),res.end());
+        // cout<<res<<endl;
+        return res;
+        
+    }
+    
