@@ -1,0 +1,13 @@
+int minIncrements(vector<int>& arr) {
+       sort(arr.begin(),arr.end());
+       int incs=0;
+       for(int i=1;i<arr.size();i++){
+            if(arr[i-1]>=arr[i]){
+                int need=arr[i-1]-arr[i]+1;
+                arr[i]+=need;
+                incs+=need;
+            }
+       }
+       
+       return incs;
+    }
