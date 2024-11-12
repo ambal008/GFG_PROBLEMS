@@ -1,0 +1,18 @@
+static  bool comp(vector<int> a,vector<int>b){
+      return a[0]<b[0];
+  }
+    bool canAttend(vector<vector<int>> &arr) {
+        std::sort(arr.begin(),arr.end(),comp);
+        
+        int freetime=arr[0][1];
+        int i;
+        for( i=1;i<arr.size();i++){
+            auto tmp=arr[i];
+            if(freetime>tmp[0]){
+                return false;
+            }
+            freetime=tmp[1];
+        }
+       return true;
+    }
+};
