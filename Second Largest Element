@@ -1,0 +1,22 @@
+int getSecondLargest(vector<int> &arr) {
+        int n=arr.size();
+         int firstlarge=arr[0];
+         int secondlarge=-1;
+         
+         for(int i=1;i<n;i++){
+             if(arr[i]>firstlarge){
+                //  cout<<firstlarge<<endl;
+                 secondlarge=firstlarge;
+                 firstlarge=arr[i];
+                //   cout<<secondlarge<<endl;
+             }
+             else if(firstlarge > arr[i] && arr[i]>secondlarge){
+                 secondlarge=arr[i];
+             }
+         }
+         
+        //   cout<<firstlarge<<endl;
+         
+         
+         return secondlarge;
+    }
