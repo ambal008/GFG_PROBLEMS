@@ -1,0 +1,31 @@
+void rev(vector<int>& arr, int i, int j) {
+        while (i < j) {
+            swap(arr[i], arr[j]);
+            ++i;
+            --j;
+        }
+    }
+    
+    void nextPermutation(vector<int>& arr) {
+        int n = arr.size();
+        int i = n - 2;
+        
+        
+        while (i >= 0 && arr[i] >= arr[i + 1]) {
+            --i;
+        }
+        
+        if (i >= 0) {
+            
+            int j = n - 1;
+            while (j >= 0 && arr[j] <= arr[i]) {
+                --j;
+            }
+            swap(arr[i], arr[j]);
+            
+            rev(arr, i + 1, n - 1);
+        } else {
+            
+            rev(arr, 0, n - 1);
+        }
+    }
