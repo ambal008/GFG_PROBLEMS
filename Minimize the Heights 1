@@ -1,0 +1,21 @@
+ int getMinDiff(int k, vector<int> &arr) {
+      
+      
+    sort(arr.begin(),arr.end());
+        int tempmin=arr[0];
+        int tempmax=arr[arr.size()-1];
+        
+        int ans=tempmax-tempmin;
+        for(int i=1;i<arr.size();i++){
+          
+            
+            tempmin=min(arr[0]+k,arr[i]-k);
+            tempmax=max(arr[i-1]+k,arr[arr.size()-1]-k);
+            
+            ans=min(ans,tempmax-tempmin);
+        }
+        
+        
+        return ans;
+       
+    }
