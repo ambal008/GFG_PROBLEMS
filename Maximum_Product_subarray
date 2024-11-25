@@ -1,0 +1,36 @@
+    int maxProduct(vector<int> &arr) {
+    int l=1;
+    int r=1;
+    int max_prod=INT_MIN;
+    
+    int n=arr.size();
+    
+    for(int i=0;i<arr.size();i++){
+        if(l==0){
+            l=1;
+            
+        }
+        
+        if(r==0){
+            r=1;
+            
+        }
+        
+        
+        l*=arr[i];
+        r*=arr[n-i-1];
+        
+        
+        
+        
+        max_prod=max(max_prod,max(l,r));
+        
+        
+        
+        
+        
+    }
+    
+    
+     return max_prod;
+    }
