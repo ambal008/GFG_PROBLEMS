@@ -1,0 +1,84 @@
+int myAtoi(char *s) {
+        int largest=2147483647;
+        int smallest=-2147483648;
+        
+        int countdigit=0;
+        int k=0;
+        bool neg=false;
+        long double rslt;
+        
+        int n=strlen(s);
+        while(s[k]==' ' || s[k]=='0'){
+            k++;
+            // cout<<"hi"<<endl;
+        }
+        
+        if(s[k]=='-'){
+             
+            neg=true;
+            k++; 
+        }
+         while(s[k]==' ' || s[k]=='0'){
+            k++;
+            
+        }
+        if(neg  && (s[k]>='0' && s[k]<='9') ){
+             
+            rslt=0-(s[k]-48);
+            //  cout<<rslt<<endl;
+            countdigit++;
+            k++;
+        }
+        else if((s[k]>='0' && s[k]<='9')){
+            rslt=(s[k]-48);
+            k++;
+            countdigit++;
+        }
+        
+       
+        
+        
+        for(int i=k;i<n;i++){
+            
+            if(s[i]>='0' && s[i]<='9'){
+               
+                
+                if(neg){
+                    //   cout<<"hi"<<endl;
+                    rslt=rslt*10 - (s[i]-48);
+                    //   cout<<rslt<<endl;
+                }
+                
+                else{
+                    rslt=rslt*10+(s[i]-48);
+                }
+                
+                
+                countdigit++;
+            }
+            else{
+                
+                
+                if(countdigit==0){
+                    break;
+                }
+                return rslt;
+            }
+            
+            
+            if((largest-9)<=rslt && i<n-1 && (s[i+1]>='0' && s[i+1]<='9')){
+                return largest;
+            }
+            
+            if(smallest+9>=rslt && i<n-1 && (s[i+1]>='0' && s[i+1]<='9')){
+                return smallest;
+            }
+ 
+            
+        }
+        
+        if(countdigit!=0){
+            return rslt;
+        }
+        return 0;
+    }
